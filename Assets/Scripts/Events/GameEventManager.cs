@@ -11,6 +11,7 @@ namespace Events
         public UIEvents uiEvents;
         public SceneEvents sceneEvents;
         public ResourceEvents resourceEvents;
+        public LevelEvents levelEvents;
 
         private void Awake()
         {
@@ -28,6 +29,7 @@ namespace Events
             uiEvents = new UIEvents();
             sceneEvents = new SceneEvents();
             resourceEvents = new ResourceEvents();
+            levelEvents = new LevelEvents();
         }
     }
 }

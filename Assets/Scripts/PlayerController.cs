@@ -31,10 +31,21 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        invincibleTimeBuffer = invincibleTime;
+    }
+
+    private void OnEnable()
+    {
         GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
         GameEventManager.Instance.inputEvents.AttackPressed += Attack;
-        
-        invincibleTimeBuffer = invincibleTime;
+        GameEventManager.Instance.levelEvents.LevelTimerFinished += DisableControlsOnLevelTimerEnd;
+    }
+
+    private void OnDisable()
+    {
+        GameEventManager.Instance.inputEvents.MovePressed -= UpdatePlayerMoveDirection;
+        GameEventManager.Instance.inputEvents.AttackPressed -= Attack;
+        GameEventManager.Instance.levelEvents.LevelTimerFinished -= DisableControlsOnLevelTimerEnd;
     }
 
     private void FixedUpdate()
@@ -83,8 +94,8 @@ public class PlayerController : MonoBehaviour
         attackRateBuffer = attackRate;
     }
 
-    private void DebugWrite(InputAction.CallbackContext context)
+    private void DisableControlsOnLevelTimerEnd()
     {
-        // if (Camera.main != null) Debug.Log(Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>()));
+        enabled = false;
     }
 }
