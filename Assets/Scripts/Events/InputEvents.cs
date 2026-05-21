@@ -11,10 +11,10 @@ namespace Events
             MovePressed?.Invoke(direction);
         }
 
-        public event Action<InputAction.CallbackContext> FirePressed;
-        public void OnFirePressed(InputAction.CallbackContext isPressed)
+        public event Action<InputAction.CallbackContext> AttackPressed;
+        public void OnAttackPressed(InputAction.CallbackContext isPressed)
         {
-            FirePressed?.Invoke(isPressed);
+            AttackPressed?.Invoke(isPressed);
         }
 
         public event Action<InputAction.CallbackContext> MouseMoved;
