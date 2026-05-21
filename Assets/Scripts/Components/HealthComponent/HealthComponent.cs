@@ -1,0 +1,38 @@
+using UnityEngine;
+
+namespace DefaultNamespace
+{
+    public class HealthComponent : MonoBehaviour, IHealthComponent
+    {
+        [SerializeField]
+        protected float _currentHealth;
+        [SerializeField]
+        protected float _maxHealth;
+
+        public virtual void Heal(int amount)
+        {
+            _currentHealth += amount;
+            ClampHealth();
+        }
+
+        public virtual void TakeDamage(float amount)
+        {
+            _currentHealth -= amount;
+            Die();
+        }
+
+        public virtual void Die()
+        {
+            if (_currentHealth > 0) return;
+            Destroy(gameObject);
+        }
+
+        public virtual void ClampHealth()
+        {
+            if (_currentHealth <= _maxHealth) return;
+            _currentHealth = _maxHealth;
+        }
+        
+        
+    }
+}
