@@ -113,7 +113,6 @@ public class PlayerController : MonoBehaviour
     /// <param name="amount"></param>
     private void FireRateChange(float amount)
     {
-        Debug.Log("skibidi");
         attackRate -= amount;
     }
 }
