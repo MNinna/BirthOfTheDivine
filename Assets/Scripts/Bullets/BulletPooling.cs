@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace PlayerScripts.Shooting
+namespace Bullets
 {
     /// <summary>
     /// Component used to pool one type of object. Pooling a different object requires another instance of BulletPooling.

@@ -1,4 +1,4 @@
-using PlayerScripts.Shooting;
+using Bullets;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour

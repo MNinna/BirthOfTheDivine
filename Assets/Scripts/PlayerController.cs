@@ -1,4 +1,5 @@
 using System;
+using Bullets;
 using Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private BulletPooling bulletPooling;
     public float movementSpeed;
     private Vector2 moveDirection;
     [SerializeField]
@@ -14,14 +16,23 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float invincibleTimeBuffer;
 
+    [Header("Attacking")] 
+    [SerializeField] 
+    private float attackRate;
+    private float attackRateBuffer;
+    private bool isFiring;
+    private Vector2 shootDirection;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        bulletPooling = GetComponent<BulletPooling>();
     }
 
     private void Start()
     {
         GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
+        GameEventManager.Instance.inputEvents.AttackPressed += Attack;
         
         invincibleTimeBuffer = invincibleTime;
     }
@@ -45,10 +56,35 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         invincibleTimeBuffer -= Time.deltaTime;
+        attackRateBuffer -= Time.deltaTime;
+
+        if (isFiring) Shoot();
     }
 
     public void MakeInvincible()
     {
         invincibleTimeBuffer = invincibleTime;
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        shootDirection = context.ReadValue<Vector2>();
+        isFiring = shootDirection.magnitude > .1f;
+    }
+
+    public void Shoot()
+    {
+        // Can't shoot yet
+        if (attackRateBuffer > 0) return;
+        var bullet = bulletPooling.GetPooledObject();
+        // Failsafe
+        if (!bullet) return;
+        bullet.Initialize(transform.position, shootDirection);
+        attackRateBuffer = attackRate;
+    }
+
+    private void DebugWrite(InputAction.CallbackContext context)
+    {
+        // if (Camera.main != null) Debug.Log(Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>()));
     }
 }

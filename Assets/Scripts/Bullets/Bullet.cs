@@ -54,7 +54,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag(objectToTargetTag)) return;
+        if (objectToTargetTag != "" && !other.CompareTag(objectToTargetTag)) return;
         other.TryGetComponent(typeof(HealthComponent), out var healthComponent);
         Hit((HealthComponent)healthComponent);
     }
