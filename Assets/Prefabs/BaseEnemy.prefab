@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -8070253095582290158}
   - component: {fileID: 7526879411059648126}
   - component: {fileID: 8862009559338543149}
+  - component: {fileID: -4933320484884234832}
   m_Layer: 0
   m_Name: BaseEnemy
   m_TagString: Enemy
@@ -181,6 +182,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   damage: 2
+  enemyType: 0
+  player: {fileID: 0}
+  moveSpeed: 3
+  detectionRadius: 8
+  meleeAttackRange: 1.5
+  preferredDistance: 8
+  dodgeDistance: 5
+  dodgeSpeed: 12
+  dodgeCooldown: 2
+  attackCooldown: 1
+  projectilePrefab: {fileID: 0}
+  firePoint: {fileID: 0}
+  projectileSpeed: 10
 --- !u!114 &8862009559338543149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,3 +209,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.HealthComponent
   _currentHealth: 5
   _maxHealth: 5
+--- !u!114 &-4933320484884234832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805256888053915068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae1a678334472d4282313f62690c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParticleThingo
+  particle: {fileID: 98029844059194531, guid: 677eac80313220c46b710b961e0f5c2a, type: 3}

@@ -1,0 +1,347 @@
+fileFormatVersion: 2
+guid: f2774e7c8baab9545a374ed48ac6a3aa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1412646541350447662
+    second: FireBall-Sheet_0
+  - first:
+      213: -1242030416368115474
+    second: FireBall-Sheet_1
+  - first:
+      213: 5892173301711940076
+    second: FireBall-Sheet_2
+  - first:
+      213: 238825007783095935
+    second: FireBall-Sheet_3
+  - first:
+      213: 7151204199039635609
+    second: FireBall-Sheet_4
+  - first:
+      213: -4763075863887432876
+    second: FireBall-Sheet_5
+  - first:
+      213: 4664802545893763483
+    second: FireBall-Sheet_6
+  - first:
+      213: 7961470416805319462
+    second: FireBall-Sheet_7
+  - first:
+      213: 8391860395019324057
+    second: FireBall-Sheet_8
+  - first:
+      213: -4885715377914215231
+    second: FireBall-Sheet_9
+  - first:
+      213: -4908857505616607394
+    second: FireBall-Sheet_10
+  - first:
+      213: -388517512952691657
+    second: FireBall-Sheet_11
+  - first:
+      213: -683907798638755919
+    second: FireBall-Sheet_12
+  - first:
+      213: 5784702550087728290
+    second: FireBall-Sheet_13
+  - first:
+      213: 7966358782581211591
+    second: FireBall-Sheet_14
+  - first:
+      213: 7320382093424001763
+    second: FireBall-Sheet_15
+  - first:
+      213: -968420881537870590
+    second: FireBall-Sheet_16
+  - first:
+      213: 5630342258953959806
+    second: FireBall-Sheet_17
+  - first:
+      213: -94307792275394749
+    second: FireBall-Sheet_18
+  - first:
+      213: -5136551129915691689
+    second: FireBall-Sheet_19
+  - first:
+      213: 5461502134302606
+    second: FireBall-Sheet_20
+  - first:
+      213: 6864384930000658436
+    second: FireBall-Sheet_21
+  - first:
+      213: 7423110120814484271
+    second: FireBall-Sheet_22
+  - first:
+      213: 1076535651265686396
+    second: FireBall-Sheet_23
+  - first:
+      213: -1870340738774682083
+    second: FireBall-Sheet_24
+  - first:
+      213: -2161586785844322364
+    second: FireBall-Sheet_25
+  - first:
+      213: -6283770089909321158
+    second: FireBall-Sheet_26
+  - first:
+      213: -8530791873515767287
+    second: FireBall-Sheet_27
+  - first:
+      213: -2795135864065486004
+    second: FireBall-Sheet_28
+  - first:
+      213: 4178349061732172335
+    second: FireBall-Sheet_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FireBall-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2aa06a7b8aba9310800000000000000
+      internalID: 1412646541350447662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireBall-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee0e528baeb63cee0800000000000000
+      internalID: -1242030416368115474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireBall-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce9a49b566435c150800000000000000
+      internalID: 5892173301711940076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireBall-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7e2468441a705300800000000000000
+      internalID: 238825007783095935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireBall-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9901a00945e2e3360800000000000000
+      internalID: 7151204199039635609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireBall-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 453b0c6dcb726edb0800000000000000
+      internalID: -4763075863887432876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b9fb7fd82163f9a47bd2ea69691dab40
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      FireBall-Sheet_0: 1412646541350447662
+      FireBall-Sheet_1: -1242030416368115474
+      FireBall-Sheet_2: 5892173301711940076
+      FireBall-Sheet_3: 238825007783095935
+      FireBall-Sheet_4: 7151204199039635609
+      FireBall-Sheet_5: -4763075863887432876
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
