@@ -1,16 +1,18 @@
-using System;
 using Events;
 using UnityEngine;
 
-public class SceneManager : MonoBehaviour
+namespace Managers
 {
-    private void Start()
+    public class SceneManager : MonoBehaviour
     {
-        GameEventManager.Instance.sceneEvents.ChangeScene += ChangeScene;
-    }
+        private void Start()
+        {
+            GameEventManager.Instance.sceneEvents.ChangeScene += ChangeScene;
+        }
 
-    private void ChangeScene(string sceneName)
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        private void ChangeScene(string sceneName)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        }
     }
 }

@@ -15,9 +15,9 @@ namespace Managers
             GameEventManager.Instance.inputEvents.OnMovePressed(context);
         }
 
-        public void FirePressed(InputAction.CallbackContext context)
+        public void AttackPressed(InputAction.CallbackContext context)
         {
-            GameEventManager.Instance.inputEvents.OnFirePressed(context);
+            GameEventManager.Instance.inputEvents.OnAttackPressed(context);
         }
 
         public void MouseMoved(InputAction.CallbackContext context)
