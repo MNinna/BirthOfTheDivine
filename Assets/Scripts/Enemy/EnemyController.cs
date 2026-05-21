@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
     public float preferredDistance = 8f;
     public float dodgeDistance = 5f;
     public float dodgeSpeed = 12f;
-    public float dodgeCooldown = 2f;
+    public float dodgeCooldown = 0.5f;
 
     [Header("Attack")]
     public float attackCooldown = 1f;
@@ -52,9 +52,12 @@ public class EnemyController : MonoBehaviour
     private bool isDodging;
     private Vector2 dodgeDirection;
 
+    public EnemyMeleeAttack _enemyMeleeAttack;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _enemyMeleeAttack = GetComponent<EnemyMeleeAttack>();
 
         if (player == null)
         {
@@ -74,11 +77,11 @@ public class EnemyController : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.position);
 
-        if (distance > detectionRadius)
-        {
-            rb.linearVelocity = Vector2.zero;
-            return;
-        }
+        //if (distance > detectionRadius)
+        //{
+        //    rb.linearVelocity = Vector2.zero;
+        //    return;
+        //}
 
         switch (enemyType)
         {
@@ -98,22 +101,8 @@ public class EnemyController : MonoBehaviour
         {
             MoveTowardsPlayer();
         }
-        else
-        {
-            rb.linearVelocity = Vector2.zero;
-
-            if (Time.time >= lastAttackTime + attackCooldown)
-            {
-                MeleeAttack();
-                lastAttackTime = Time.time;
-            }
-        }
     }
 
-    void MeleeAttack()
-    {
-        Debug.Log(name + " used MELEE attack!");
-    }
 
     void HandleRangedEnemy(float distance)
     {
@@ -198,6 +187,7 @@ public class EnemyController : MonoBehaviour
 
     void MoveTowardsPlayer()
     {
+        if (_enemyMeleeAttack.isAttacking) return;
         Vector2 direction =
             (player.position - transform.position).normalized;
 

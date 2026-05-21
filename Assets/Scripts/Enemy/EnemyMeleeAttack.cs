@@ -1,14 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyMeleeAI : MonoBehaviour
+public class EnemyMeleeAttack : MonoBehaviour
 {
     public Transform player;
     private Rigidbody2D rb;
 
     [Header("Movement")]
     public float walkSpeed = 2f;
-    public float runSpeed = 4f;
+    public float runSpeed = 10f;
     public float chargeSpeed = 7f;
 
     [Header("Ranges")]
@@ -18,7 +18,7 @@ public class EnemyMeleeAI : MonoBehaviour
     [Header("Attack Timing")]
     public float attackCooldown = 2f;
 
-    private bool isAttacking;
+    public bool isAttacking;
     private float lastAttackTime;
 
     void Start()
@@ -33,10 +33,10 @@ public class EnemyMeleeAI : MonoBehaviour
 
     void Update()
     {
-
         if (player == null || isAttacking) return;
 
         float dist = Vector2.Distance(transform.position, player.position);
+        //Debug.Log(dist);
 
         if (dist > detectionRange)
         {
@@ -50,44 +50,10 @@ public class EnemyMeleeAI : MonoBehaviour
         }
         else
         {
-            Vector2 dir = (player.position - transform.position).normalized;
-            rb.linearVelocity = dir * walkSpeed;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
-    IEnumerator DoRandomAttack()
-    {
-        isAttacking = true;
-        rb.linearVelocity = Vector2.zero;
-
-        int roll = Random.Range(0, 5);
-
-        switch (roll)
-        {
-            case 0:
-                yield return StartCoroutine(ChargeDashHeavy());
-                break;
-
-            case 1:
-                yield return StartCoroutine(DashSlashThrough());
-                break;
-
-            case 2:
-                yield return StartCoroutine(SmallWalkAttack());
-                break;
-
-            case 3:
-                yield return StartCoroutine(RunChargeHeavy());
-                break;
-
-            case 4:
-                yield return StartCoroutine(JumpToPositionAOE());
-                break;
-        }
-
-        lastAttackTime = Time.time;
-        isAttacking = false;
-    }
     IEnumerator DoAttackDecision()
     {
         isAttacking = true;
@@ -95,7 +61,7 @@ public class EnemyMeleeAI : MonoBehaviour
 
         float dist = Vector2.Distance(transform.position, player.position);
 
-        if (dist > 6f)
+        if (dist > 7f)
         {
             if (Random.value > 0.5f)
                 yield return StartCoroutine(JumpToPositionAOE());
@@ -103,7 +69,7 @@ public class EnemyMeleeAI : MonoBehaviour
                 yield return StartCoroutine(DashSlashThrough());
         }
 
-        else if (dist > 2f)
+        else if (dist > 4f)
         {
             if (Random.value > 0.5f)
                 yield return StartCoroutine(ChargeDashHeavy());
@@ -111,12 +77,14 @@ public class EnemyMeleeAI : MonoBehaviour
                 yield return StartCoroutine(RunChargeHeavy());
         }
 
-        else
+        else if (dist > 2f)
         {
-            if (Random.value > 0.5f)
-                yield return StartCoroutine(SmallWalkAttack());
-            else
-                yield return StartCoroutine(ChargeDashHeavy());
+            yield return StartCoroutine(ChargeDashHeavy());
+        }
+
+        else if (dist > 1f)
+        {
+            yield return StartCoroutine(SmallWalkAttack());
         }
 
         lastAttackTime = Time.time;
@@ -126,12 +94,14 @@ public class EnemyMeleeAI : MonoBehaviour
     // 1. charge -> dash -> heavy attack
     IEnumerator ChargeDashHeavy()
     {
+        isAttacking = true;
         rb.linearVelocity = Vector2.zero;
 
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(1f);
+
         Vector2 dir = (player.position - transform.position).normalized;
 
-        float dashDistance = 2.5f;
+        float dashDistance = 5f;
         Vector2 startPos = transform.position;
         Vector2 targetPos = startPos + dir * dashDistance;
 
@@ -141,7 +111,10 @@ public class EnemyMeleeAI : MonoBehaviour
         while (t < 1f)
         {
             t += Time.deltaTime / dashTime;
-            transform.position = Vector2.Lerp(startPos, targetPos, t);
+
+            transform.position =
+                Vector2.Lerp(startPos, targetPos, t);
+
             yield return null;
         }
 
@@ -149,18 +122,22 @@ public class EnemyMeleeAI : MonoBehaviour
 
         HeavyAttack();
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
 
         rb.linearVelocity = Vector2.zero;
-        yield return new WaitForSeconds(1.0f);
+
+        yield return new WaitForSeconds(0.2f);
+        isAttacking = false;
     }
 
     // 2. dash through player
     IEnumerator DashSlashThrough()
     {
+        isAttacking = true;
+
         Vector2 dir = (player.position - transform.position).normalized;
 
-        float dashDistance = 4f;
+        float dashDistance = 3f;
         Vector2 startPos = transform.position;
         Vector2 targetPos = (Vector2)player.position + dir * dashDistance;
 
@@ -179,11 +156,15 @@ public class EnemyMeleeAI : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero;
         SlashAttack();
+
+        isAttacking = false;
     }
 
     // 3. walk to player -> small attack
     IEnumerator SmallWalkAttack()
     {
+        isAttacking = true;
+
         while (Vector2.Distance(transform.position, player.position) > attackRange)
         {
             Vector2 dir = (player.position - transform.position).normalized;
@@ -196,20 +177,45 @@ public class EnemyMeleeAI : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         SmallAttack();
+
+        isAttacking = false;
     }
 
     // 4. run -> charge -> heavy attack
     IEnumerator RunChargeHeavy()
     {
-        Vector2 dir = (player.position - transform.position).normalized;
+        isAttacking = true;
 
-        rb.linearVelocity = dir * runSpeed;
-        yield return new WaitForSeconds(0.4f);
+        Vector2 targetPos = player.position;
+
+        float runTime = 0.4f;
+        float t = 0f;
+
+        Vector2 startPos = transform.position;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / runTime;
+
+            Vector2 nextPos =
+                Vector2.Lerp(startPos, targetPos, t);
+
+            rb.MovePosition(nextPos);
+
+            yield return null;
+        }
 
         rb.linearVelocity = Vector2.zero;
+
+        yield return new WaitForSeconds(0.3f);
+
+        Vector2 dir =
+            (player.position - transform.position).normalized;
+
+        rb.linearVelocity = Vector2.zero;
+
         yield return new WaitForSeconds(0.2f);
 
-        dir = (player.position - transform.position).normalized;
         rb.linearVelocity = dir * chargeSpeed;
 
         yield return new WaitForSeconds(0.25f);
@@ -217,27 +223,35 @@ public class EnemyMeleeAI : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
 
         RunHeavyAttack();
+
+        yield return new WaitForSeconds(0.6f);
+
+        isAttacking = false;
     }
 
     // 5. jump to position aoe
     IEnumerator JumpToPositionAOE()
     {
+        isAttacking = true;
+
         Vector2 targetPos = player.position;
 
         rb.linearVelocity = Vector2.zero;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(2.5f);
 
         Vector2 start = transform.position;
         float t = 0;
 
         while (t < 1f)
         {
-            t += Time.deltaTime * 4f;
+            t += Time.deltaTime * 8f;
             transform.position = Vector2.Lerp(start, targetPos, t);
             yield return null;
         }
 
         AOEAttack(targetPos);
+
+        isAttacking = false;
     }
 
 
