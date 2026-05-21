@@ -7,7 +7,7 @@ namespace Events
         public event Action<int> HealthChange;
         public event Action<int> DamageChange;
         public event Action<int> SpeedChange;
-        public event Action<int> FireRateChange;
+        public event Action<float> FireRateChange;
         public event Action<int> BulletSpeedChange;
 
         public virtual void OnHealthChange(int obj)
@@ -25,7 +25,7 @@ namespace Events
             SpeedChange?.Invoke(obj);
         }
 
-        public virtual void OnFireRateChange(int obj)
+        public virtual void OnFireRateChange(float obj)
         {
             FireRateChange?.Invoke(obj);
         }

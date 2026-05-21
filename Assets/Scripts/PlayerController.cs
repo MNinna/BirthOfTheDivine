@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         GameEventManager.Instance.inputEvents.AttackPressed += Attack;
         GameEventManager.Instance.levelEvents.LevelTimerFinished += DisableControlsOnLevelTimerEnd;
         GameEventManager.Instance.playerStatEvents.SpeedChange += SpeedChange;
+        GameEventManager.Instance.playerStatEvents.FireRateChange += FireRateChange;
     }
 
     private void OnDisable()
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
         GameEventManager.Instance.inputEvents.MovePressed -= UpdatePlayerMoveDirection;
         GameEventManager.Instance.inputEvents.AttackPressed -= Attack;
         GameEventManager.Instance.levelEvents.LevelTimerFinished -= DisableControlsOnLevelTimerEnd;
+        GameEventManager.Instance.playerStatEvents.SpeedChange -= SpeedChange;
+        GameEventManager.Instance.playerStatEvents.FireRateChange -= FireRateChange;
     }
 
     private void FixedUpdate()
@@ -108,8 +111,9 @@ public class PlayerController : MonoBehaviour
     /// Fire rate needs to DECREASE to get better!!! Unlike literally everything else
     /// </summary>
     /// <param name="amount"></param>
-    private void FireRateChange(int amount)
+    private void FireRateChange(float amount)
     {
+        Debug.Log("skibidi");
         attackRate -= amount;
     }
 }

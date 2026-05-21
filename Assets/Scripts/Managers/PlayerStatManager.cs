@@ -20,7 +20,7 @@ namespace Managers
             GameEventManager.Instance.playerStatEvents.OnSpeedChange(amount);
         }
 
-        public void FireRateChange(int amount)
+        public void FireRateChange(float amount)
         {
             GameEventManager.Instance.playerStatEvents.OnFireRateChange(amount);
         }
