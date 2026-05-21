@@ -17,12 +17,39 @@ namespace Bullets
         [SerializeField] 
         private float TTL; // Time To Live - Racunalne mreze reference
         private float _timerBuffer;
+namespace Bullets
+{
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class Bullet : MonoBehaviour
+    {
+        private Rigidbody2D _rb;
+        private Vector2 _moveDirection;
+        [SerializeField]
+        private float speed;
+        [SerializeField] 
+        private string objectToTargetTag;
+        [SerializeField]
+        private int damage;
+        [SerializeField] 
+        private float TTL; // Time To Live - Racunalne mreze reference
+        private float _timerBuffer;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
         }
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+        }
 
+        public void Initialize(Vector2 startingPosition, Vector2 direction)
+        {
+            transform.position = startingPosition;
+            _moveDirection = direction;
+            gameObject.SetActive(true);
+            _timerBuffer = TTL;
+        }
         public void Initialize(Vector2 startingPosition, Vector2 direction)
         {
             transform.position = startingPosition;
@@ -36,12 +63,25 @@ namespace Bullets
             _timerBuffer -= Time.deltaTime;
             if (_timerBuffer <= 0) gameObject.SetActive(false);
         }
+        private void Update()
+        {
+            _timerBuffer -= Time.deltaTime;
+            if (_timerBuffer <= 0) gameObject.SetActive(false);
+        }
 
         private void FixedUpdate()
         {
             Move();
         }
+        private void FixedUpdate()
+        {
+            Move();
+        }
 
+        private void Move()
+        {
+            _rb.MovePosition(_rb.position + _moveDirection * (speed * Time.fixedDeltaTime));
+        }
         private void Move()
         {
             _rb.MovePosition(_rb.position + _moveDirection * (speed * Time.fixedDeltaTime));
@@ -52,10 +92,14 @@ namespace Bullets
             gameObject.SetActive(false);
             healthComponent?.TakeDamage(damage);
         }
+        public virtual void Hit(HealthComponent healthComponent)
+        {
+            gameObject.SetActive(false);
+            healthComponent?.TakeDamage(damage);
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log(other.tag);
             // Failsafes
             if (objectToTargetTag == "") return;
             if (!other.CompareTag(objectToTargetTag)) return;
