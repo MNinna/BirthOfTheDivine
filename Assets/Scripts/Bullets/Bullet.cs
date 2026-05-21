@@ -9,11 +9,11 @@ namespace Bullets
         private Rigidbody2D _rb;
         private Vector2 _moveDirection;
         [SerializeField]
-        private float speed;
+        protected float speed;
         [SerializeField] 
         private string objectToTargetTag;
         [SerializeField]
-        private int damage;
+        protected int damage;
         [SerializeField] 
         private float TTL; // Time To Live - Racunalne mreze reference
         private float _timerBuffer;
