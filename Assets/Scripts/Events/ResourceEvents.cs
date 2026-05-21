@@ -5,6 +5,8 @@ namespace Events
 {
     public class ResourceEvents
     {
+        #region Reward
+
         public event Action<int> RewardBlood;
         public void OnRewardBlood(int amount)
         {
@@ -16,5 +18,39 @@ namespace Events
         {
             RewardBones?.Invoke(amount);
         }
+
+        #endregion
+
+        #region Lose
+
+        public event Action<int> TakeBlood;
+        public void OnTakeBlood(int amount)
+        {
+            TakeBlood?.Invoke(amount);
+        }
+        
+        public event Action<int> TakeBones;
+        public void OnTakeBones(int amount)
+        {
+            TakeBones?.Invoke(amount);
+        }
+
+        #endregion
+
+        #region RetrieveFromOtherClasses
+
+        public event Func<int> GetBlood;
+        public int OnGetBlood()
+        {
+            return GetBlood?.Invoke()?? 0;
+        }
+        
+        public event Func<int> GetBones;
+        public int OnGetBones()
+        {
+            return GetBones?.Invoke() ?? 0;
+        }
+
+        #endregion
     }
 }
