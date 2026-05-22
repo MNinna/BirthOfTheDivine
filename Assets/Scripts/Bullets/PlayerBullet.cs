@@ -1,5 +1,6 @@
 using System;
 using Events;
+using Managers;
 
 namespace Bullets
 {
@@ -7,18 +8,8 @@ namespace Bullets
     {
         private void Start()
         {
-            GameEventManager.Instance.playerStatEvents.DamageChange += DamageChange;
-            GameEventManager.Instance.playerStatEvents.BulletSpeedChange += SpeedChange;
-        }
-        
-        private void DamageChange(int amount)
-        {
-            damage += amount;
-        }
-        
-        private void SpeedChange(int amount)
-        {
-            speed += amount;
+            damage = PlayerStatManager.Instance.damage;
+            speed = PlayerStatManager.Instance.bulletSpeed;
         }
     }
 }
