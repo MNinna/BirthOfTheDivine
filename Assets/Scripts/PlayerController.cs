@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
     {
         GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
         GameEventManager.Instance.inputEvents.AttackPressed += Attack;
-        rb.MovePosition(new Vector2(0, 0));
+        Debug.Log("skibidi"); 
+        transform.position = new Vector3(0, 0, transform.position.z);
     }
 }

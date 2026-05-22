@@ -1,6 +1,4 @@
-using System;
 using Events;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnablePlayerControls : MonoBehaviour
