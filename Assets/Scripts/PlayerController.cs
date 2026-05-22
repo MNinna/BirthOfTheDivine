@@ -1,8 +1,10 @@
+using System;
 using Bullets;
 using Events;
 using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -24,6 +26,15 @@ public class PlayerController : MonoBehaviour
     private bool isFiring;
     private Vector2 shootDirection;
 
+    [Header("Dash Settings")]
+    public float dashSpeed = 20f;
+    public float dashDuration = 0.15f;
+    public float dashCooldown = 1f;
+
+    private float lastDashTime;
+    private bool isDashing;
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,12 +53,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
+        GameEventManager.Instance.inputEvents.AttackPressed += Attack;
         GameEventManager.Instance.levelEvents.LevelTimerFinished += DisableControlsOnLevelTimerEnd;
         GameEventManager.Instance.sceneEvents.SceneLoaded += EnableControlsOnSceneChanged;
     }
 
     private void OnDisable()
     {
+        GameEventManager.Instance.inputEvents.MovePressed -= UpdatePlayerMoveDirection;
+        GameEventManager.Instance.inputEvents.AttackPressed -= Attack;
         GameEventManager.Instance.levelEvents.LevelTimerFinished -= DisableControlsOnLevelTimerEnd;
         GameEventManager.Instance.sceneEvents.SceneLoaded -= EnableControlsOnSceneChanged;
     }
@@ -64,12 +79,21 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        // Move
+        if (isDashing) return;
+
         rb.MovePosition(rb.position + moveDirection * (movementSpeed * Time.fixedDeltaTime));
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (Time.time >= lastDashTime + dashCooldown)
+            {
+                StartCoroutine(Dash());
+            }
+        }
+
         invincibleTimeBuffer -= Time.deltaTime;
         attackRateBuffer -= Time.deltaTime;
 
@@ -113,5 +137,32 @@ public class PlayerController : MonoBehaviour
         GameEventManager.Instance.inputEvents.AttackPressed += Attack;
         Debug.Log("skibidi"); 
         transform.position = new Vector3(0, 0, transform.position.z);
+    }
+
+    IEnumerator Dash()
+    {
+        isDashing = true;
+        lastDashTime = Time.time;
+
+        Vector2 inputDir = new Vector2(
+            Input.GetAxisRaw("Horizontal"),
+            Input.GetAxisRaw("Vertical")
+        ).normalized;
+
+        if (inputDir == Vector2.zero)
+            inputDir = moveDirection;
+
+        float elapsed = 0f;
+
+        while (elapsed < dashDuration)
+        {
+            elapsed += Time.fixedDeltaTime;
+
+            rb.MovePosition(rb.position + inputDir * dashSpeed * Time.fixedDeltaTime);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        isDashing = false;
     }
 }
