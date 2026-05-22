@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private int damage;
+    public int bloodReward;
 
     private void OnCollisionStay2D(Collision2D other)
     {
