@@ -22,7 +22,7 @@ namespace Events
             }
             Instance = this;
             
-            Cursor.visible = false;
+            
 
             // Initialize events
             inputEvents = new InputEvents();
