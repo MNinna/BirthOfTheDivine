@@ -152,6 +152,7 @@ Transform:
   - {fileID: 778625429}
   - {fileID: 1445594894}
   - {fileID: 552191222}
+  - {fileID: 680326504}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &157855082
@@ -412,7 +413,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1512937557}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &529975706
 GameObject:
@@ -798,7 +799,7 @@ PrefabInstance:
     - target: {fileID: 7526879411059648126, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
       propertyPath: firePoint
       value: 
-      objectReference: {fileID: 431585988}
+      objectReference: {fileID: 0}
     - target: {fileID: 7526879411059648126, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
       propertyPath: projectileSpeed
       value: 20
@@ -849,10 +850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8945670938476872352, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 431585988}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
 --- !u!1 &1445594893
@@ -901,11 +899,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerResources
   blood: 0
   bones: 0
---- !u!4 &1471304040 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8945670938476872352, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
-  m_PrefabInstance: {fileID: 1025027877}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1512937552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1128,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParticleThingo
   particle: {fileID: 795855864683272783, guid: 50479eb6ed56d0f41af9c326a0771041, type: 3}
+--- !u!1 &1995476332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 805256888053915068, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
+  m_PrefabInstance: {fileID: 4172897116495952428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1995476340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995476332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16398c964e7a32c4696c24aae7e6bce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeAttack
+  player: {fileID: 1512937557}
+  walkSpeed: 2
+  runSpeed: 10
+  chargeSpeed: 7
+  detectionRange: 8
+  attackRange: 1.5
+  attackCooldown: 2
+  isAttacking: 0
 --- !u!1001 &4172897116495952428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1204,8 +1222,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 805256888053915068, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 366496343}
+      insertIndex: 6
+      addedObject: {fileID: 1995476340}
   m_SourcePrefab: {fileID: 100100000, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
 --- !u!1001 &4298535895606904307
 PrefabInstance:
@@ -1268,10 +1286,10 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 619394802}
   - {fileID: 157855085}
   - {fileID: 69815437}
   - {fileID: 1512937557}
-  - {fileID: 519420032}
   - {fileID: 4172897116495952428}
   - {fileID: 1025027877}
+  - {fileID: 4298535895606904307}
+  - {fileID: 529975708}
