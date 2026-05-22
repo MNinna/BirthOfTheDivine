@@ -1,11 +1,14 @@
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Bullets
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class Bullet : MonoBehaviour
     {
+        private VisualEffectObject vfx;
+        private TrailRenderer trail;
         private Rigidbody2D _rb;
         private Vector2 _moveDirection;
         [SerializeField]
@@ -17,14 +20,27 @@ namespace Bullets
         [SerializeField] 
         private float TTL; // Time To Live - Racunalne mreze reference
         private float _timerBuffer;
+        //particlethingo
         
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            trail = GetComponent<TrailRenderer>();
+
         }
-        
+
+        private void OnEnable()
+        {
+            
+            if (trail != null)
+            {
+                trail.Clear();
+            }
+        }
+
         public void Initialize(Vector2 startingPosition, Vector2 direction)
         {
+            
             transform.position = startingPosition;
             _moveDirection = direction;
             gameObject.SetActive(true);
@@ -50,6 +66,7 @@ namespace Bullets
         public virtual void Hit(HealthComponent healthComponent)
         {
             gameObject.SetActive(false);
+            GetComponent<ParticleThingo>().SpawnParticle();
             healthComponent?.TakeDamage(damage);
         }
 
@@ -61,5 +78,7 @@ namespace Bullets
             other.TryGetComponent(typeof(HealthComponent), out var healthComponent);
             Hit((HealthComponent)healthComponent);
         }
+
+        
     }
 }

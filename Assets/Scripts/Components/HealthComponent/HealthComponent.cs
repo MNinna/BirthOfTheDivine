@@ -25,6 +25,7 @@ namespace DefaultNamespace
         {
             if (_currentHealth > 0) return;
             Destroy(gameObject);
+            GetComponent<ParticleThingo>().SpawnParticle();
         }
 
         public virtual void ClampHealth()

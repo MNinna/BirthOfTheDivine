@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
         // Failsafe
         if (!bullet) return;
         bullet.Initialize(transform.position, shootDirection);
+        GetComponent<ParticleThingo>().SpawnParticle();
         attackRateBuffer = attackRate;
     }
 
