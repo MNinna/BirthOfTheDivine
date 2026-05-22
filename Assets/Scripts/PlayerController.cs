@@ -1,5 +1,6 @@
 using Bullets;
 using Events;
+using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,6 +31,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        invincibleTime = PlayerStatManager.Instance.invincibilityTimer;
+        movementSpeed = PlayerStatManager.Instance.speed;
+        attackRate = PlayerStatManager.Instance.fireRate;
+        
         invincibleTimeBuffer = invincibleTime;
     }
 
@@ -38,8 +43,6 @@ public class PlayerController : MonoBehaviour
         GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
         GameEventManager.Instance.inputEvents.AttackPressed += Attack;
         GameEventManager.Instance.levelEvents.LevelTimerFinished += DisableControlsOnLevelTimerEnd;
-        GameEventManager.Instance.playerStatEvents.SpeedChange += SpeedChange;
-        GameEventManager.Instance.playerStatEvents.FireRateChange += FireRateChange;
     }
 
     private void OnDisable()
@@ -47,8 +50,6 @@ public class PlayerController : MonoBehaviour
         GameEventManager.Instance.inputEvents.MovePressed -= UpdatePlayerMoveDirection;
         GameEventManager.Instance.inputEvents.AttackPressed -= Attack;
         GameEventManager.Instance.levelEvents.LevelTimerFinished -= DisableControlsOnLevelTimerEnd;
-        GameEventManager.Instance.playerStatEvents.SpeedChange -= SpeedChange;
-        GameEventManager.Instance.playerStatEvents.FireRateChange -= FireRateChange;
     }
 
     private void FixedUpdate()
@@ -101,19 +102,5 @@ public class PlayerController : MonoBehaviour
     private void DisableControlsOnLevelTimerEnd()
     {
         enabled = false;
-    }
-
-    private void SpeedChange(int amount)
-    {
-        movementSpeed += amount;
-    }
-
-    /// <summary>
-    /// Fire rate needs to DECREASE to get better!!! Unlike literally everything else
-    /// </summary>
-    /// <param name="amount"></param>
-    private void FireRateChange(float amount)
-    {
-        attackRate -= amount;
     }
 }

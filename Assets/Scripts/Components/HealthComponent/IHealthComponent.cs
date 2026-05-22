@@ -12,7 +12,7 @@ public interface IHealthComponent
     /// Damage the character.
     /// </summary>
     /// <param name="amount">Amount of health to remove.</param>
-    public void TakeDamage(float amount);
+    public void TakeDamage(int amount);
 
     /// <summary>
     /// dies.

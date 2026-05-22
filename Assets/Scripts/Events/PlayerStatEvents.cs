@@ -9,6 +9,7 @@ namespace Events
         public event Action<int> SpeedChange;
         public event Action<float> FireRateChange;
         public event Action<int> BulletSpeedChange;
+        public event Action<float> InvincibilityTimerChange;
 
         public virtual void OnHealthChange(int obj)
         {
@@ -33,6 +34,11 @@ namespace Events
         public virtual void OnBulletSpeedChange(int obj)
         {
             BulletSpeedChange?.Invoke(obj);
+        }
+
+        public virtual void OnInvincibilityTimerChange(float obj)
+        {
+            InvincibilityTimerChange?.Invoke(obj);
         }
     }
 }

@@ -5,9 +5,9 @@ namespace DefaultNamespace
     public class HealthComponent : MonoBehaviour, IHealthComponent
     {
         [SerializeField]
-        protected float _currentHealth;
+        protected int _currentHealth;
         [SerializeField]
-        protected float _maxHealth;
+        protected int _maxHealth;
 
         public virtual void Heal(int amount)
         {
@@ -15,7 +15,7 @@ namespace DefaultNamespace
             ClampHealth();
         }
 
-        public virtual void TakeDamage(float amount)
+        public virtual void TakeDamage(int amount)
         {
             _currentHealth -= amount;
             Die();

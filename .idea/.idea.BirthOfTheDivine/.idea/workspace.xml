@@ -11,15 +11,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e0cac96-2487-4b35-980b-ba7b67a5de78" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Upgrade1.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Upgrade1.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/KeepManagersLoaded.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/KeepManagersLoaded.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ui.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ui/FadeTransition.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ui/FadeTransition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BirthOfTheDivine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BirthOfTheDivine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PlayerBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerBullet.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullets/PlayerBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullets/PlayerBullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Components/HealthComponent/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Components/HealthComponent/HealthComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Components/HealthComponent/IHealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Components/HealthComponent/IHealthComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Components/PlayerHealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Components/PlayerHealthComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemies/big boss guy accent color cyan.ase.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Enemies/big boss guy accent color cyan.ase.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemies/type 1 melee accent color cyan.ase.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Enemies/type 1 melee accent color cyan.ase.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemies/type 2 shooter.ase.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Enemies/type 2 shooter.ase.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/FireBall-Sheet.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/FireBall-Sheet.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Player/player.ase.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Player/player.ase.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/GameEventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/GameEventManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/PlayerStatEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/PlayerStatEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/PlayerStatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/PlayerStatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +41,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Events/UIEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/KeepManagersLoaded.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/PlayerStatManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Sprites.meta" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8,
@@ -57,7 +71,7 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;fade-transition&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,

@@ -1,7 +1,7 @@
 using System;
-using System.Data;
 using DefaultNamespace;
 using Events;
+using Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -20,12 +20,15 @@ namespace Components
 
         private void Start()
         {
-            GameEventManager.Instance.playerStatEvents.HealthChange += IncreaseMaxHealth;
+            _maxHealth = PlayerStatManager.Instance.maxHealth;
+            _currentHealth = PlayerStatManager.Instance.maxHealth;
             GameEventManager.Instance.levelEvents.LevelTimerFinished += DisableHealth;
         }
 
         private void DisableHealth()
         {
+            PlayerStatManager.Instance.maxHealth = _maxHealth;
+            PlayerStatManager.Instance.health = _currentHealth;
             enabled = false;
         }
 
@@ -35,7 +38,7 @@ namespace Components
             _sr.color = Color.red;
         }
 
-        public override void TakeDamage(float amount)
+        public override void TakeDamage(int amount)
         {
             if (_playerController.invincibleTimeBuffer > 0) return;
             base.TakeDamage(amount);
@@ -44,12 +47,6 @@ namespace Components
             GameEventManager.Instance.resourceEvents.OnTakeBlood(Random.Range(3, 8));
             Random.InitState(DateTime.Now.Millisecond);
             GameEventManager.Instance.resourceEvents.OnTakeBones(Random.Range(1, 3));
-        }
-
-        private void IncreaseMaxHealth(int amount)
-        {
-            _maxHealth += amount;
-            _currentHealth += amount;
         }
     }
 }
