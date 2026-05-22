@@ -12,9 +12,9 @@ public class PlayerShoot : MonoBehaviour
 
     void Start()
     {
-        //Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
-        //Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
     }
 
     void Update()

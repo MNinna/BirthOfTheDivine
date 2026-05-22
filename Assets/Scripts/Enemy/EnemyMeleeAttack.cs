@@ -20,6 +20,7 @@ public class EnemyMeleeAttack : MonoBehaviour
 
     public bool isAttacking;
     public bool jumpAttack;
+    public bool slashAttack;
     private float lastAttackTime;
 
     void Start()
@@ -135,6 +136,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     IEnumerator DashSlashThrough()
     {
         isAttacking = true;
+        slashAttack = true;
 
         Vector2 dir = (player.position - transform.position).normalized;
 
@@ -158,6 +160,7 @@ public class EnemyMeleeAttack : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         SlashAttack();
 
+        slashAttack = false;
         isAttacking = false;
     }
 
@@ -186,6 +189,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     IEnumerator RunChargeHeavy()
     {
         isAttacking = true;
+        slashAttack = true;
 
         Vector2 targetPos = player.position;
 
@@ -227,6 +231,7 @@ public class EnemyMeleeAttack : MonoBehaviour
 
         yield return new WaitForSeconds(0.6f);
 
+        slashAttack = false;
         isAttacking = false;
     }
 

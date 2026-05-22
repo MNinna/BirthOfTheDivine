@@ -18,7 +18,9 @@ public class DynamicCamera : MonoBehaviour
     private Vector3 currentLookAhead;
 
     [Header("Shake")]
-    public float shakeIntensity = 0.5f;
+    public float jumpShakeIntensity = 0.5f;
+    public float slashShakeIntensity = 0.1f;
+
     void LateUpdate()
     {
         if (player == null) return;
@@ -50,7 +52,11 @@ public class DynamicCamera : MonoBehaviour
 
         if (enemyMeleeAttack != null && enemyMeleeAttack.jumpAttack)
         {
-            shake = Random.insideUnitCircle * shakeIntensity;
+            shake = Random.insideUnitCircle * jumpShakeIntensity;
+        }
+        else if (enemyMeleeAttack != null && enemyMeleeAttack.slashAttack)
+        {
+            shake = Random.insideUnitCircle * slashShakeIntensity;
         }
 
         transform.position = basePos + shake;

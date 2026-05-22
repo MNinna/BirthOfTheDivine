@@ -23,7 +23,6 @@ namespace Events
             Instance = this;
             
             
-
             // Initialize events
             inputEvents = new InputEvents();
             uiEvents = new UIEvents();
