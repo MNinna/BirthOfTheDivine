@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Events;
 using UnityEngine;
 
 namespace Bullets
@@ -15,14 +16,8 @@ namespace Bullets
 
         private void Start()
         {
-            // Create a list of bullets
-            pooledObjects = new List<Bullet>();
-            
-            // Create n bullets
-            for (var i = 0; i < amountToPool; i++)
-            {
-                CreateBullet();
-            }
+            PoolObjects();
+            GameEventManager.Instance.sceneEvents.SceneLoaded += PoolObjects;
         }
 
         // Return inactive Bullets
@@ -51,6 +46,18 @@ namespace Bullets
             tmp.SetActive(false);
             // Add it to the list
             pooledObjects.Add(tmp.GetComponent<Bullet>());
+        }
+
+        private void PoolObjects()
+        {
+            // Create a list of bullets
+            pooledObjects = new List<Bullet>();
+            
+            // Create n bullets
+            for (var i = 0; i < amountToPool; i++)
+            {
+                CreateBullet();
+            }
         }
     }
 }

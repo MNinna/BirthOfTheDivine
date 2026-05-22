@@ -1,35 +1,61 @@
 using Events;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
-public class Upgrade : MonoBehaviour
+namespace Upgrades
 {
-    public void HealthChange(int amount)
+    public class Upgrade : MonoBehaviour
     {
-        GameEventManager.Instance.playerStatEvents.OnHealthChange(amount);
-    }
+        [SerializeField] private int bloodCost;
+        
+        public void HealthChange(int amount)
+        {
+            if (!CanBuy()) return;
+            GameEventManager.Instance.playerStatEvents.OnHealthChange(amount);
+            gameObject.SetActive(false);
+        }
 
-    public void DamageChange(int amount)
-    {
-        GameEventManager.Instance.playerStatEvents.OnDamageChange(amount);
-    }
+        public void DamageChange(int amount)
+        {
+            if (!CanBuy()) return;
+            GameEventManager.Instance.playerStatEvents.OnDamageChange(amount);
+            gameObject.SetActive(false);
+        }
 
-    public void SpeedChange(int amount)
-    {
-        GameEventManager.Instance.playerStatEvents.OnSpeedChange(amount);
-    }
+        public void SpeedChange(int amount)
+        {
+            if (!CanBuy()) return;
+            GameEventManager.Instance.playerStatEvents.OnSpeedChange(amount);
+            gameObject.SetActive(false);
+        }
 
-    public void FireRateChange(float amount)
-    {
-        GameEventManager.Instance.playerStatEvents.OnFireRateChange(amount);
-    }
+        public void FireRateChange(float amount)
+        {
+            if (!CanBuy()) return;
+            GameEventManager.Instance.playerStatEvents.OnFireRateChange(amount);
+            gameObject.SetActive(false);
+        }
 
-    public void BulletSpeedChange(int amount)
-    {
-        GameEventManager.Instance.playerStatEvents.OnBulletSpeedChange(amount);
-    }
+        public void BulletSpeedChange(int amount)
+        {
+            if (!CanBuy()) return;
+            GameEventManager.Instance.playerStatEvents.OnBulletSpeedChange(amount);
+            gameObject.SetActive(false);
+        }
 
-    public void InvincibilityTimerChange(float amount)
-    {
-        GameEventManager.Instance.playerStatEvents.OnInvincibilityTimerChange(amount);
+        public void InvincibilityTimerChange(float amount)
+        {
+            if (!CanBuy()) return;
+            GameEventManager.Instance.playerStatEvents.OnInvincibilityTimerChange(amount);
+            gameObject.SetActive(false);
+        }
+
+        private bool CanBuy()
+        {
+            if (bloodCost > GameEventManager.Instance.resourceEvents.OnGetBlood()) return false;
+            GameEventManager.Instance.resourceEvents.OnTakeBlood(bloodCost);
+            return true;
+        }
     }
 }

@@ -8,4 +8,10 @@ public class SceneEvents
     {
         ChangeScene?.Invoke(sceneName);
     }
+
+    public event Action SceneLoaded;
+    public void OnSceneLoaded()
+    {
+        SceneLoaded?.Invoke();
+    }
 }

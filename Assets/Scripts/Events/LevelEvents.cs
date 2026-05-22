@@ -10,6 +10,10 @@ namespace Events
             LevelTimerFinished?.Invoke();
         }
         
-        
+        public event Action<int> LevelTimerStarted;
+        public void OnLevelTimerStarted(int seconds)
+        {
+            LevelTimerStarted?.Invoke(seconds);
+        }
     }
 }

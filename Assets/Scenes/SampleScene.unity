@@ -650,7 +650,7 @@ MonoBehaviour:
   _fadeTime: 2
   _fadeIn: 0
   _fadeOut: 0
-  _newSceneName: Upgrade1
+  _newSceneName: SheepScene
 --- !u!1 &680326503
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +677,7 @@ Transform:
   m_GameObject: {fileID: 680326503}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 68.17334, y: 30.65435, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c4922ff1974c46b861fcdb1f9af60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerResources
-  blood: 0
+  blood: 86
   bones: 0
 --- !u!1 &1475153203
 GameObject:
@@ -1176,8 +1176,8 @@ GameObject:
   - component: {fileID: 1512937559}
   - component: {fileID: 1512937554}
   - component: {fileID: 1512937553}
-  - component: {fileID: 1512937558}
   - component: {fileID: 1512937560}
+  - component: {fileID: 1512937561}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1211,6 +1211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ec2fd687916df7ea2e58909cf4bb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  bulletPooling: {fileID: 0}
   movementSpeed: 5
   invincibleTime: 0.75
   invincibleTimeBuffer: 0
@@ -1317,21 +1318,6 @@ Transform:
   - {fileID: 519420032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1512937558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512937552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e1a83d595285834d97551ce67980bd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullets.BulletPooling
-  pooledObjects: []
-  objectToPool: {fileID: 6237103895754342464, guid: edd713b28de524989b9a5acdf5b6806f, type: 3}
-  amountToPool: 10
 --- !u!61 &1512937559
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1391,6 +1377,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParticleThingo
   particle: {fileID: 795855864683272783, guid: 50479eb6ed56d0f41af9c326a0771041, type: 3}
+--- !u!114 &1512937561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512937552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1a83d595285834d97551ce67980bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullets.BulletPooling
+  pooledObjects: []
+  objectToPool: {fileID: 6237103895754342464, guid: edd713b28de524989b9a5acdf5b6806f, type: 3}
+  amountToPool: 10
 --- !u!1 &1995476332 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 805256888053915068, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
@@ -1462,7 +1463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8945670938476872352, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.29
+      value: 5.75
       objectReference: {fileID: 0}
     - target: {fileID: 8945670938476872352, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1561,6 +1562,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50479eb6ed56d0f41af9c326a0771041, type: 3}
+--- !u!1001 &5364572671754658378
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5002370384607670665, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002370384607670665, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002370384607670665, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002370384607670665, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002370384607670665, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002370384607670665, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002370384607670665, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002370384607670665, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002370384607670665, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002370384607670665, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973978795532252584, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
+      propertyPath: m_Name
+      value: InitiateScene
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7b6187a90f224e1a93a343478b31704, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1573,3 +1631,4 @@ SceneRoots:
   - {fileID: 4298535895606904307}
   - {fileID: 529975708}
   - {fileID: 1475153207}
+  - {fileID: 5364572671754658378}

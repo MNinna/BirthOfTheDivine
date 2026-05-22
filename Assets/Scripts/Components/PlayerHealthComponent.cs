@@ -23,6 +23,7 @@ namespace Components
             _maxHealth = PlayerStatManager.Instance.maxHealth;
             _currentHealth = PlayerStatManager.Instance.maxHealth;
             GameEventManager.Instance.levelEvents.LevelTimerFinished += DisableHealth;
+            GameEventManager.Instance.sceneEvents.SceneLoaded += () => enabled = true;
         }
 
         private void DisableHealth()

@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    [SerializeField]
     private BulletPooling bulletPooling;
     public float movementSpeed;
     private Vector2 moveDirection;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         bulletPooling = GetComponent<BulletPooling>();
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
@@ -40,16 +42,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
-        GameEventManager.Instance.inputEvents.AttackPressed += Attack;
         GameEventManager.Instance.levelEvents.LevelTimerFinished += DisableControlsOnLevelTimerEnd;
+        GameEventManager.Instance.sceneEvents.SceneLoaded += EnableControlsOnSceneChanged;
     }
 
     private void OnDisable()
     {
-        GameEventManager.Instance.inputEvents.MovePressed -= UpdatePlayerMoveDirection;
-        GameEventManager.Instance.inputEvents.AttackPressed -= Attack;
         GameEventManager.Instance.levelEvents.LevelTimerFinished -= DisableControlsOnLevelTimerEnd;
+        GameEventManager.Instance.sceneEvents.SceneLoaded -= EnableControlsOnSceneChanged;
     }
 
     private void FixedUpdate()
@@ -101,6 +101,16 @@ public class PlayerController : MonoBehaviour
 
     private void DisableControlsOnLevelTimerEnd()
     {
-        enabled = false;
+        GameEventManager.Instance.inputEvents.MovePressed -= UpdatePlayerMoveDirection;
+        GameEventManager.Instance.inputEvents.AttackPressed -= Attack;
+        moveDirection = Vector2.zero;
+        isFiring = false;
+    }
+
+    private void EnableControlsOnSceneChanged()
+    {
+        GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
+        GameEventManager.Instance.inputEvents.AttackPressed += Attack;
+        rb.MovePosition(new Vector2(0, 0));
     }
 }
