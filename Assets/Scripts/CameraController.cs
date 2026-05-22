@@ -5,6 +5,7 @@ public class DynamicCamera : MonoBehaviour
     public Transform player;
     public Rigidbody2D playerRb;
     public EnemyMeleeAttack enemyMeleeAttack;
+    public EnemyController enemyController;
 
     [Header("Follow")]
     public float smoothTime = 0.2f;
@@ -20,6 +21,7 @@ public class DynamicCamera : MonoBehaviour
     [Header("Shake")]
     public float jumpShakeIntensity = 0.5f;
     public float slashShakeIntensity = 0.1f;
+    public float rangedShakeIntensity = 0.05f;
 
     void LateUpdate()
     {
@@ -55,6 +57,10 @@ public class DynamicCamera : MonoBehaviour
             shake = Random.insideUnitCircle * jumpShakeIntensity;
         }
         else if (enemyMeleeAttack != null && enemyMeleeAttack.slashAttack)
+        {
+            shake = Random.insideUnitCircle * slashShakeIntensity;
+        }
+        else if (enemyController != null && enemyController.chargedAttack)
         {
             shake = Random.insideUnitCircle * slashShakeIntensity;
         }

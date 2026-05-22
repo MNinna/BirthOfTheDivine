@@ -30,26 +30,25 @@ public class PlayerShoot : MonoBehaviour
         if (projectilePrefab == null || firePoint == null)
             return;
 
+        Vector3 mouseScreen = Input.mousePosition;
+        mouseScreen.z = Mathf.Abs(Camera.main.transform.position.z);
+
         Vector3 mouseWorld =
-            Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Camera.main.ScreenToWorldPoint(mouseScreen);
 
         mouseWorld.z = 0f;
 
+        // AIM FROM PLAYER CENTER
         Vector2 direction =
-            (mouseWorld - firePoint.position).normalized;
+            (mouseWorld - transform.position).normalized;
 
+        // SPAWN FROM WEAPON
         GameObject projectile =
             Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
         Rigidbody2D rb =
             projectile.GetComponent<Rigidbody2D>();
 
-        if (rb != null)
-        {
-            rb.linearVelocity = direction * projectileSpeed;
-        }
-
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
+        rb.linearVelocity = direction * projectileSpeed;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyController : MonoBehaviour
 {
@@ -37,6 +38,14 @@ public class EnemyController : MonoBehaviour
     public float dodgeDistance = 5f;
     public float dodgeSpeed = 12f;
     public float dodgeCooldown = 0.5f;
+
+    [Header("Charged Ranged Attack")]
+    public float chargedAttackCooldown = 4f;
+    public float chargeTime = 1.2f;
+
+    private float lastChargedAttackTime;
+    private bool isChargingAttack;
+    public bool chargedAttack;
 
     [Header("Attack")]
     public float attackCooldown = 1f;
@@ -129,20 +138,77 @@ public class EnemyController : MonoBehaviour
             rb.linearVelocity = toPlayer * moveSpeed;
         }
 
-        else
-        {
-            rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
 
-            if (Time.time >= lastAttackTime + attackCooldown)
-            {
-                RangedAttack();
-                lastAttackTime = Time.time;
-            }
+        if (!isChargingAttack && Time.time >= lastChargedAttackTime + chargedAttackCooldown)
+        {
+            StartCoroutine(ChargedDoubleShot());
+            lastChargedAttackTime = Time.time;
+        }
+
+        else if (Time.time >= lastAttackTime + attackCooldown)
+        {
+            RangedAttack();
+            lastAttackTime = Time.time;
+        }
+    }
+
+    IEnumerator ChargedDoubleShot()
+    {
+        isChargingAttack = true;
+
+        rb.linearVelocity = Vector2.zero;
+
+        yield return new WaitForSeconds(chargeTime);
+
+        if (player == null)
+        {
+            isChargingAttack = false;
+            yield break;
+        }
+
+        Vector2 baseDir =
+            (player.position - firePoint.position).normalized;
+
+        Vector2 perp = new Vector2(-baseDir.y, baseDir.x);
+
+        float spread = 0.4f;
+
+        SpawnProjectile(baseDir + perp * spread);
+
+        SpawnProjectile(baseDir - perp * spread);
+
+        chargedAttack = true;
+
+        yield return new WaitForSeconds(0.4f);
+
+        chargedAttack = false;
+        isChargingAttack = false;
+    }
+
+    void SpawnProjectile(Vector2 direction)
+    {
+        if (projectilePrefab == null || firePoint == null)
+            return;
+
+        GameObject projectile = Instantiate(
+            projectilePrefab,
+            firePoint.position,
+            Quaternion.identity
+        );
+
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            rb.linearVelocity = direction.normalized * projectileSpeed * 1.2f;
         }
     }
 
     void StartDodge(Vector2 awayDirection)
     {
+        if (isChargingAttack) return;
+
         isDodging = true;
         lastDodgeTime = Time.time;
 
@@ -163,6 +229,8 @@ public class EnemyController : MonoBehaviour
 
     void RangedAttack()
     {
+        if (isChargingAttack) return;
+
         Debug.Log(name + " used RANGED attack!");
 
         if (projectilePrefab == null || firePoint == null)
@@ -190,7 +258,7 @@ public class EnemyController : MonoBehaviour
         if (_enemyMeleeAttack.isAttacking) return;
         Vector2 direction =
             (player.position - transform.position).normalized;
-
+        if (isChargingAttack) return;
         rb.linearVelocity = direction * moveSpeed;
     }
 

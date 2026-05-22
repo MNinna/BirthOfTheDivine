@@ -3,6 +3,7 @@ using Bullets;
 using Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -23,6 +24,14 @@ public class PlayerController : MonoBehaviour
     private bool isFiring;
     private Vector2 shootDirection;
 
+    [Header("Dash Settings")]
+    public float dashSpeed = 20f;
+    public float dashDuration = 0.15f;
+    public float dashCooldown = 1f;
+
+    private float lastDashTime;
+    private bool isDashing;
+
 
     private void Awake()
     {
@@ -33,14 +42,17 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         invincibleTimeBuffer = invincibleTime;
-    }
-
-    private void OnEnable()
-    {
         GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
         GameEventManager.Instance.inputEvents.AttackPressed += Attack;
         GameEventManager.Instance.levelEvents.LevelTimerFinished += DisableControlsOnLevelTimerEnd;
     }
+
+    //private void OnEnable()
+    //{
+    //    GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
+    //    GameEventManager.Instance.inputEvents.AttackPressed += Attack;
+    //    GameEventManager.Instance.levelEvents.LevelTimerFinished += DisableControlsOnLevelTimerEnd;
+    //}
 
     private void OnDisable()
     {
@@ -61,12 +73,21 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        // Move
+        if (isDashing) return;
+
         rb.MovePosition(rb.position + moveDirection * (movementSpeed * Time.fixedDeltaTime));
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (Time.time >= lastDashTime + dashCooldown)
+            {
+                StartCoroutine(Dash());
+            }
+        }
+
         invincibleTimeBuffer -= Time.deltaTime;
         attackRateBuffer -= Time.deltaTime;
 
@@ -98,5 +119,32 @@ public class PlayerController : MonoBehaviour
     private void DisableControlsOnLevelTimerEnd()
     {
         enabled = false;
+    }
+
+    IEnumerator Dash()
+    {
+        isDashing = true;
+        lastDashTime = Time.time;
+
+        Vector2 inputDir = new Vector2(
+            Input.GetAxisRaw("Horizontal"),
+            Input.GetAxisRaw("Vertical")
+        ).normalized;
+
+        if (inputDir == Vector2.zero)
+            inputDir = moveDirection;
+
+        float elapsed = 0f;
+
+        while (elapsed < dashDuration)
+        {
+            elapsed += Time.fixedDeltaTime;
+
+            rb.MovePosition(rb.position + inputDir * dashSpeed * Time.fixedDeltaTime);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        isDashing = false;
     }
 }
