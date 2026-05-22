@@ -384,7 +384,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 12.17
+  orthographic size: 7.7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -777,6 +777,10 @@ PrefabInstance:
       value: Enemy_Ranged
       objectReference: {fileID: 0}
     - target: {fileID: 3231867890691114880, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5358512425497395273, guid: 19de114f857407132b6c6f8a462a4c72, type: 3}
+    - target: {fileID: 3231867890691114880, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
       propertyPath: m_Color.b
       value: 0.48776254
       objectReference: {fileID: 0}
@@ -1028,7 +1032,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -6037391459256165899, guid: 65b02ca1c057f56cda1c2f43760ec431, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1107,7 +1111,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.4375, y: 1.875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1165,6 +1169,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Melee
       objectReference: {fileID: 0}
+    - target: {fileID: 3231867890691114880, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1103107345527097333, guid: 4b182d34315cee60485daf551b2b0559, type: 3}
     - target: {fileID: 7526879411059648126, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
       propertyPath: player
       value: 

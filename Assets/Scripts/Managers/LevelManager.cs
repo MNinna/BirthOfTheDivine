@@ -1,6 +1,5 @@
 using Events;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Managers
 {
