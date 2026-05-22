@@ -37,6 +37,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7526879411059648126, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
+      propertyPath: bloodReward
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7526879411059648126, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
       propertyPath: projectileSpeed
       value: 20
       objectReference: {fileID: 0}

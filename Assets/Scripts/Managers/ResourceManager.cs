@@ -50,6 +50,8 @@ namespace Managers
         private void TakeBlood(int amount)
         {
             blood -= amount;
+            if (blood < 0) blood = 0;
+            GameEventManager.Instance.uiEvents.OnUpdateBlood(blood);
         }
     
         private void TakeBones(int amount)

@@ -269,6 +269,7 @@ Transform:
   - {fileID: 552191222}
   - {fileID: 680326504}
   - {fileID: 1066312154}
+  - {fileID: 906275336}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &69815438
@@ -292,6 +293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 134346178}
+  - component: {fileID: 134346179}
   m_Layer: 5
   m_Name: BloodCounter
   m_TagString: Untagged
@@ -320,6 +322,18 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: 35}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &134346179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134346177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9cee74d77c43c5a173f27b14e486d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ui.Display.DisplayBlood
 --- !u!1 &157855082
 GameObject:
   m_ObjectHideFlags: 0
@@ -15356,7 +15370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20da143f4e7c94145ab4102157e49e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Managers.LevelManager
-  levelTimerSeconds: 3
+  levelTimerSeconds: 60
   timerBuffer: 0
 --- !u!1 &604884741
 GameObject:
@@ -15882,6 +15896,7 @@ GameObject:
   - component: {fileID: 906275335}
   - component: {fileID: 906275334}
   - component: {fileID: 906275333}
+  - component: {fileID: 906275337}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15966,13 +15981,25 @@ RectTransform:
   m_Children:
   - {fileID: 1529026615}
   - {fileID: 134346178}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 69815437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &906275337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906275332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c502ee837843cbb24cd8476a166411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ui.Display.DisplayHealth
 --- !u!1 &1066312153
 GameObject:
   m_ObjectHideFlags: 0
@@ -16106,7 +16133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c4922ff1974c46b861fcdb1f9af60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerResources
-  blood: 86
+  blood: 0
   bones: 0
 --- !u!1 &1475153203
 GameObject:
@@ -16524,7 +16551,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16934,7 +16961,6 @@ SceneRoots:
   - {fileID: 5364572671754658378}
   - {fileID: 4643128823837843562}
   - {fileID: 1323673856}
-  - {fileID: 906275336}
   - {fileID: 65465090}
   - {fileID: 731861162}
   - {fileID: 2103959857}

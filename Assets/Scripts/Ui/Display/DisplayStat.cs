@@ -6,7 +6,7 @@ namespace Ui.Display
     {
         protected int displayValue;
         
-        protected void GetDisplayValue(int amount)
+        protected virtual void GetDisplayValue(int amount)
         {
             displayValue = amount;
         }

@@ -36,6 +36,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7526879411059648126, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
+      propertyPath: bloodReward
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8945670938476872352, guid: 00b74e2bce11d4da2b251296afb807a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

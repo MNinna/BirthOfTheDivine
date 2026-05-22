@@ -44,5 +44,15 @@ namespace Components.HealthComponent
             if (_currentHealth <= _maxHealth) return;
             _currentHealth = _maxHealth;
         }
+
+        public int GetMaxHealth()
+        {
+            return _maxHealth;
+        }
+
+        public int GetCurrentHealth()
+        {
+            return _currentHealth;
+        }
     }
 }

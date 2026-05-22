@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dffc3515b7504a6f92b6219d2b78ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy.EnemySpawner
-  spawnDelay: 2
+  spawnDelay: 4
   enemies:
   - {fileID: 8587599476296666392, guid: 778350c6acffe4107b31c3e00ea1fa2c, type: 3}
   - {fileID: 2438043107390173313, guid: 1972ab9f974924b94bf8b2eec002a372, type: 3}
