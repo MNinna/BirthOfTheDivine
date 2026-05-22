@@ -1,4 +1,4 @@
-using DefaultNamespace;
+using Components.HealthComponent;
 using UnityEngine;
 using UnityEngine.VFX;
 

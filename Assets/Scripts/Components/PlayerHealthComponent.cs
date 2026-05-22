@@ -1,5 +1,4 @@
 using System;
-using DefaultNamespace;
 using Events;
 using Managers;
 using UnityEngine;
@@ -7,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Components
 {
-    public class PlayerHealthComponent : HealthComponent
+    public class PlayerHealthComponent : HealthComponent.HealthComponent
     {
         private PlayerController _playerController;
         private SpriteRenderer _sr;
@@ -46,8 +45,7 @@ namespace Components
             _playerController.MakeInvincible();
             Random.InitState(DateTime.Now.Millisecond);
             GameEventManager.Instance.resourceEvents.OnTakeBlood(Random.Range(3, 8));
-            Random.InitState(DateTime.Now.Millisecond);
-            GameEventManager.Instance.resourceEvents.OnTakeBones(Random.Range(1, 3));
+            GameEventManager.Instance.uiEvents.OnUpdateHealth(_currentHealth);
         }
     }
 }

@@ -34,6 +34,7 @@ namespace Managers
         private void AddBlood(int amount)
         {
             blood += amount;
+            GameEventManager.Instance.uiEvents.OnUpdateBlood(blood);
         }
     
         private void AddBones(int amount)

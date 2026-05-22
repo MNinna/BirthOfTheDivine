@@ -1,6 +1,9 @@
+using System;
+using Events;
+using JetBrains.Annotations;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Components.HealthComponent
 {
     public class HealthComponent : MonoBehaviour, IHealthComponent
     {
@@ -8,6 +11,13 @@ namespace DefaultNamespace
         protected int _currentHealth;
         [SerializeField]
         protected int _maxHealth;
+        [CanBeNull] private EnemyController enemyController;
+
+
+        private void Awake()
+        {
+            enemyController = GetComponent<EnemyController>();
+        }
 
         public virtual void Heal(int amount)
         {
@@ -24,6 +34,7 @@ namespace DefaultNamespace
         public virtual void Die()
         {
             if (_currentHealth > 0) return;
+            if (enemyController) GameEventManager.Instance.resourceEvents.OnRewardBlood(enemyController.bloodReward);
             Destroy(gameObject);
             GetComponent<ParticleThingo>().SpawnParticle();
         }
@@ -33,7 +44,5 @@ namespace DefaultNamespace
             if (_currentHealth <= _maxHealth) return;
             _currentHealth = _maxHealth;
         }
-        
-        
     }
 }
