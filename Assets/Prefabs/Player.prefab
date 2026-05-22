@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 790805599584503409}
   - component: {fileID: 7250896279803098721}
   - component: {fileID: 2480954510764009609}
-  - component: {fileID: 8891835378555107929}
   - component: {fileID: 2759699302233630212}
   m_Layer: 0
   m_Name: Player
@@ -87,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1823384711897739383, guid: 6c5a1681fd44c4b0a9a438b4bba43067, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -162,7 +161,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 1.875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -182,10 +181,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ec2fd687916df7ea2e58909cf4bb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  bulletPooling: {fileID: 0}
   movementSpeed: 5
   invincibleTime: 0.75
   invincibleTimeBuffer: 0
   attackRate: 0.45
+  dashSpeed: 20
+  dashDuration: 0.15
+  dashCooldown: 1
 --- !u!114 &2480954510764009609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,21 +203,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthComponent
   _currentHealth: 5
   _maxHealth: 5
---- !u!114 &8891835378555107929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8015896035047130742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e1a83d595285834d97551ce67980bd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullets.BulletPooling
-  pooledObjects: []
-  objectToPool: {fileID: 6237103895754342464, guid: edd713b28de524989b9a5acdf5b6806f, type: 3}
-  amountToPool: 10
 --- !u!114 &2759699302233630212
 MonoBehaviour:
   m_ObjectHideFlags: 0

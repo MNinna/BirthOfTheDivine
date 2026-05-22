@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
+        GameEventManager.Instance.inputEvents.AttackPressed += Attack;
+        
         invincibleTime = PlayerStatManager.Instance.invincibilityTimer;
         movementSpeed = PlayerStatManager.Instance.speed;
         attackRate = PlayerStatManager.Instance.fireRate;
@@ -53,8 +56,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
-        GameEventManager.Instance.inputEvents.AttackPressed += Attack;
+        // GameEventManager.Instance.inputEvents.MovePressed += UpdatePlayerMoveDirection;
+        // GameEventManager.Instance.inputEvents.AttackPressed += Attack;
         GameEventManager.Instance.levelEvents.LevelTimerFinished += DisableControlsOnLevelTimerEnd;
         GameEventManager.Instance.sceneEvents.SceneLoaded += EnableControlsOnSceneChanged;
     }
